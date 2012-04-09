@@ -94,6 +94,4 @@ exports.play = function(req, res, next) {
         .where("owner=?")
         .orderby("tabid")
         .execute();
-
 }
-

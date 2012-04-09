@@ -1,5 +1,5 @@
 {
-        "name": "informix_db_browser"
+        "name": "informix-db-browser"
     ,   "version": "0.0.1"
     ,   "scripts": {
             "start": "node server.js"
@@ -8,6 +8,6 @@
     , "dependencies": {
           "express": "2.5.0"
         , "jade": ">= 0.0.1"
-        , "nodejs-db-informix": ">= 0.0.2"
+        , "nodejs-db-informix": ">= 0.0.3"
       }
 }
