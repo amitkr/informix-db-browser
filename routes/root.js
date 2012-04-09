@@ -31,13 +31,14 @@ c.on('error', function(error) {
 
 });
 
-exports.play = function(req, res) {
+exports.play = function(req, res, next) {
     var rs;
+    var user = req.param('user', 'informix');
 
     rs = c
         .query(
               ""
-            , []
+            , [ user ]
             , function () {
                 var rs = arguments[1];
                 var cols = arguments[2];
@@ -72,6 +73,9 @@ exports.play = function(req, res) {
 
                 // console.log('CALLBACK:');
                 // console.log(arguments);
+
+                res.end("Fun!");
+                // next();
             }
             , {
                 start: function(q) {
@@ -87,10 +91,9 @@ exports.play = function(req, res) {
         )
         .select("*")
         .from("systables", false)
-        .where("owner='amitkr'")
+        .where("owner=?")
         .orderby("tabid")
         .execute();
 
-    res.end("Fun!");
 }
 

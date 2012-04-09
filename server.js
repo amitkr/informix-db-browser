@@ -13,7 +13,7 @@ if (kreg.test(os.hostname())) {
 
 var express = require('express')
 //   , piler = require('piler')
-  , handlers = require('./handlers')
+  , routes = require('./routes')
   ;
 
 var server = module.exports = express.createServer();
@@ -45,7 +45,7 @@ server.configure('production', function(){
 
 // Routes
 
-server.get('/', handlers.root);
+server.get('/', routes.root);
 
 /*
 clientjs.addOb({ "VERSION" : "0.0.1" });
