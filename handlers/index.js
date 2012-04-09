@@ -6,5 +6,5 @@ exports.index = function(req, res){
   res.render('index', { title: 'Express' })
 };
 
-var fun = require("./fun.js");
-exports.fun = fun.play;
+var root = require("./root.js");
+exports.root = root.play;

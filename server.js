@@ -45,7 +45,7 @@ server.configure('production', function(){
 
 // Routes
 
-server.get('/', handlers.fun);
+server.get('/', handlers.root);
 
 /*
 clientjs.addOb({ "VERSION" : "0.0.1" });
