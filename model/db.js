@@ -97,8 +97,8 @@ DB.tables = function(res, user) {
         .execute();
 }
 
-DB.databases = function (req) {
-    var rs = this.DB
+DB.databases = function (res) {
+    var rs = DB
         .query(
               ""
             , []
@@ -135,7 +135,7 @@ DB.databases = function (req) {
                 res.write('</table>');
 
                 // console.log('CALLBACK:');
-                // console.log(arguments);
+                console.log(arguments);
 
             }
             , {
@@ -152,8 +152,9 @@ DB.databases = function (req) {
         )
         .select("*")
         .from("sysdatabases", false)
+        .orderby("name")
         .execute();
 }
 
 exports.tables = DB.tables;
-exports.databases = exports.db = DB.database;
+exports.databases = exports.db = DB.databases;
