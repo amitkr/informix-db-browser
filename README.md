@@ -1,5 +1,5 @@
 
-By any means, this is not completely ready yet.
+This is an incomplete project. Use at your own risk.
 
 Introduction
 ============
