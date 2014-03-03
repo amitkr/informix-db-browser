@@ -8,6 +8,6 @@
     , "dependencies": {
           "express": "2.5.0"
         , "jade": ">= 0.0.1"
-        , "nodejs-db-informix": ">= 0.0.3"
+        , "nodejs-db-informix": ">= 0.0.11"
       }
 }
