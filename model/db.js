@@ -33,7 +33,7 @@ if (DB === undefined) {
     DB = new Object();
 }
 
-DB.tables = function(res, user) {
+DB.tables = function(res, user, tname) {
     if (!user) {
         return;
     }
@@ -41,7 +41,7 @@ DB.tables = function(res, user) {
     var rs = DB
         .query(
               ""
-            , [ user ]
+            , [ user, tname ]
             , function () {
                 var rs = arguments[1];
                 var cols = arguments[2];
@@ -65,7 +65,11 @@ DB.tables = function(res, user) {
                         if (r) {
                             res.write('<tr>');
                             for (var col in r) {
-                                res.write('<td>' + r[col] + '</td>');
+								if (col === 'name') {
+									res.write('<td><a href="/table/name=' + r[col] + '">' + r[col] + '</a></td>');
+								} else {
+									res.write('<td>' + r[col] + '</td>');
+								}
                             }
                             res.write('</tr>');
                         }
@@ -92,16 +96,16 @@ DB.tables = function(res, user) {
         )
         .select("*")
         .from("systables", false)
-        .where("owner=?")
+        .where("owner=? and tabname=?")
         .orderby("tabid")
         .execute();
 }
 
-DB.databases = function (res) {
+DB.databases = function (res, user, dbname) {
     var rs = DB
         .query(
               ""
-            , []
+            , [ user, dbname ]
             , function () {
                 var rs = arguments[1];
                 var cols = arguments[2];
@@ -125,7 +129,11 @@ DB.databases = function (res) {
                         if (r) {
                             res.write('<tr>');
                             for (var col in r) {
-                                res.write('<td>' + r[col] + '</td>');
+								if (col === 'name') {
+									res.write('<td><a href="/databases/' + r[col] + '">' + r[col] + '</a></td>');
+								} else {
+									res.write('<td>' + r[col] + '</td>');
+								}
                             }
                             res.write('</tr>');
                         }
@@ -151,7 +159,8 @@ DB.databases = function (res) {
             }
         )
         .select("*")
-        .from("sysdatabases", false)
+        .from("sysmaster:sysdatabases", false)
+		.where("owner like ? and name like ?")
         .orderby("name")
         .execute();
 }
