@@ -41,6 +41,10 @@ server.configure('production', function(){
 
 server.get('/', routes.root);
 
+server.get('/tables/:name?', routes.tables);
+
+server.get('/databases/:name?', routes.databases);
+
 server.listen(port, function () {
     //console.log(server);
     console.log("server listening on port %d in %s mode", server.address().port, server.settings.env);

@@ -8,3 +8,9 @@ exports.index = function(req, res){
 
 var root = require("./root.js");
 exports.root = root.play;
+
+var databases = require("./databases.js");
+exports.databases = exports.db = databases.play;
+
+var tables = require("./tables.js");
+exports.tables = tables.play;
