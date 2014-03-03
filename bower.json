@@ -1,0 +1,24 @@
+{
+  "name": "informix-db-browser",
+  "version": "0.0.1",
+  "homepage": "https://github.com/amitkr/informix-db-browser",
+  "authors": [
+    "Amit Kumar <amitkr@rocketmail.com>"
+  ],
+  "description": "Simple Informix Database browser using nodejs-db-informix",
+  "main": "server.js",
+  "keywords": [
+    "database",
+    "browser",
+    "informix",
+    "nodejs-db-informix"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
